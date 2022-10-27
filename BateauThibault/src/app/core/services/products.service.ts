@@ -12,6 +12,8 @@ export class ProductsService {
 
   getProductsFromJson()
   {
-    return this.http.get<Product[]>("../assets/data/products.json");
+   // return this.http.get<Product[]>("../assets/data/products.json");
+
+   return this.http.get<Product[]>("http://127.0.0.1:8000/infoproducts/");
   }
 }
