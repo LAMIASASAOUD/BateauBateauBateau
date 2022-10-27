@@ -1,0 +1,43 @@
+.input{
+    border-color: white;
+    background-color: #070607;
+    color: white;
+    width:  60px;
+}
+
+:host {
+    font-style: italic;  }
+
+    .h1{
+        color:aqua;
+    }
+
+    .btnn{
+        color: rgb(57, 57, 59);
+    }
+
+    .btn{
+        color: rgb(5, 83, 31);
+    }
+
+    table{
+        background-color: rgb(178, 224, 231);
+        border: #070607;
+    }
+
+    h3{
+       text-align: center;
+    }
+
+    h1{
+        text-align: center;
+     }
+ 
+
+    .plusb{
+        font-style: inherit;
+        background-color: aquamarine;
+        
+    }
+
+   

@@ -1,0 +1,310 @@
+
+
+
+<h1>Les produits de la poisseniere</h1>
+
+
+<p id = "titre"></p>
+
+<h3>Poissons : </h3>
+<table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Quantités</th>
+        <th scope="col">Promotion</th>
+        <th scope ="col">Commentaires</th>
+
+
+       
+      </tr>
+    </thead>
+    <tbody>
+        
+            <tr *ngFor="let produit of cat1">
+                <th scope="row">{{produit.id}}</th>
+                <td>{{produit.name}}</td>
+                <td>{{produit.price}}</td>
+                <td>
+                  <input type="number" class="input" value="{{produit.quantity_stock}}" (keyup)="recV($event,produit)">
+                  <!-- Button trigger modal -->
+                   <button type="button" class="état " data-toggle="modal" data-target="#exampleModal">
+                     afficher
+                    </button>
+                </td>
+                <td>  
+
+                  <input type="number" class="input" value="{{produit.quantity_sold}}" (keyup)="onKey($event,produit)">
+                  <button type="button" class="plusb " (click)="addPromotion(produit)">+</button>
+                  <button type="button" class="plusb" (click)="subPromotion(produit)">-</button>
+                  <input type = "text" class = "form-control" style="width: 50px ; ">
+
+                </td>
+                <td>{{produit.comments}}</td>
+              </tr>
+        
+    </tbody>
+  </table>
+
+
+
+  <h3>Fruits de mer: </h3>
+<table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantités</th>
+        <th scope="col">Promotion</th>
+     
+        <th scope ="col">Commentaires</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+            <tr *ngFor="let produit of cat2">
+              <th scope="row">{{produit.id}}</th>
+              <td>{{produit.name}}</td>
+              <td>{{produit.price}}</td>
+              
+                <td>
+                  <input type="number" class="input" value="{{produit.quantity_stock}}" (keyup)="recV($event,produit)">
+  
+             <!-- Button trigger modal -->
+             <button type="button" class="état" data-toggle="modal" data-target="#exampleModal">
+              afficher
+            </button>
+            <input id = "{{produit.id}}" type = "text" class = "form-control" style="width: 50px ; ">
+            </td>
+                <td> 
+                  <input type="number" class="input" value="{{produit.quantity_sold}}" (keyup)="onKey($event,produit)">
+
+                  <button type="button" class="plusb" (click)="addPromotion(produit)">+</button>
+                  <button type="button" class="plusb" (click)="subPromotion(produit)">-</button></td>
+              <td>{{produit.comments}}</td>
+            </tr>
+        
+    </tbody>
+  </table>
+
+
+
+
+  <h3>Crustacés : </h3>
+<table class="table ">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Quantités</th>
+        <th scope="col">Promotion</th>
+        <th scope ="col">Commentaires</th>
+
+
+       
+      </tr>
+    </thead>
+    <tbody>
+        
+            <tr *ngFor="let produit of cat3">
+              <th scope="row">{{produit.id}}</th>
+              <td>{{produit.name}}</td>
+              <td>{{produit.price}}</td>
+              <td>{{produit.quantity_stock}}
+                <button type="button" class="btn " (click)="add(produit)">+</button>
+         <!-- Button trigger modal -->
+         <button type="button" class="état" data-toggle="modal2" data-target="#exampleModal">
+          afficher
+        </button>
+                <input type = "text" class = "form-control" style="width: 50px ; ">
+              </td>
+              <td>                  
+                <input type="number" class="input" value="{{produit.quantity_sold}}" (keyup)="onKey($event,produit)">
+ 
+                <button type="button" class="btn " (click)="addPromotion(produit)">+</button>
+                <button type="button" class="btnn" (click)="subPromotion(produit)">-</button>
+              </td>
+              <td>{{produit.comments}}</td>
+            </tr>
+        
+    </tbody>
+  </table>
+
+
+
+
+
+
+   <!-- Modal bouton périmé ou vendu cat3-->
+
+   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Détails du produit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Le produit est il vendu ou périmé?
+        </div>
+        <div class="modal-footer">
+          <tr *ngFor="let produit of cat3">
+
+          <td>{{produit.quantity_sold}}  
+
+          <button type="button" class="btn"   class="btn " (click)="sub(produit)" data-dismiss="modal">Vendu</button>
+          <button type="button" class="btnn" class="btn " (click)="sub(produit)" (click)="vendre()">périmé</button>
+          <td>{{produit.comments}}</td>
+        </tr>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+   <!-- Modal bouton périmé ou vendu cat2-->
+
+   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Détails du produit</h5>
+          <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Le produit est il vendu ou périmé?
+        </div>
+        <div class="modal-footer">
+          <tr *ngFor="let produit of cat3">
+
+          <td>{{produit.quantity_sold}}  
+
+          <button type="button" class="btn"   class="btn " (click)="sub(produit)" data-dismiss="modal">Vendu</button>
+          <button type="button" class="btnn" class="btn " (click)="sub(produit)" (click)="vendre()">périmé</button>
+          <td>{{produit.comments}}</td>
+        </tr>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+    Envoyer ->
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Envoyer Mise à jour</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Vous voullez vraiment envoyer la mise à jour ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-dark" (click)="vendre()">Envoyer -></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+   <!-- Modal -->
+   <div class="modal fade" id="modalStock" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label class="form-label">Ajouter/Enlever</label>
+            <input type="text" class = "form-control">
+            <button type = "button" class="btn btn-dark">+</button>
+            <button type = "button" class="btn btn-dark">-</button>
+
+          
+       
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-dark">Envoyer -></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+   <!-- Modal -->
+   <div class="modal fade" id="modalProm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label class="form-label">Modifier le pourcentage de la Promotion</label>
+            <input type="text" class = "form-control">
+            <button type = "button" class="btn btn-dark">+</button>
+            <button type = "button" class="btn btn-dark">-</button>
+
+          
+       
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-dark">Envoyer -></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
